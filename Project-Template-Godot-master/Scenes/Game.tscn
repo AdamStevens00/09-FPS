@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/shotgun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Global.gd" type="Script" id=4]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -1.00542, 0.00546448, -1.00546, -1.00542, 0.00546448, 1.00546, 1.00546, 0.00546448, -1.00546, 1.00546, 0.00546448, 1.00546 )
@@ -14,6 +17,7 @@ radius = 0.5
 extents = Vector3( 0.4, 0.4, 0.4 )
 
 [node name="Game" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Ground" type="StaticBody" parent="."]
 
@@ -42,3 +46,34 @@ shape = SubResource( 4 )
 [node name="Camera" type="Camera" parent="Player/Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
 current = true
+
+[node name="Shotgun" parent="Player/Pivot" instance=ExtResource( 2 )]
+transform = Transform( -8, 0, -2.60673e-06, 0, 8, 0, 2.60673e-06, 0, -8, 0.25, 1.4, -0.35 )
+
+[node name="Muzzle" type="Position3D" parent="Player/Pivot"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0.25, 1, -0.676 )
+
+[node name="Bullets" type="Spatial" parent="."]
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+margin_right = 138.0
+margin_bottom = 54.0
+color = Color( 0, 0, 0, 0.25098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 13.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 76.0
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Global" type="Spatial" parent="."]
+script = ExtResource( 4 )
