@@ -1,7 +1,7 @@
 extends KinematicBody
 
 onready var Camera = $Pivot/Camera
-var bullet = preload("res://scenes/bullet.tscn")
+var bullet = preload("res://scenes/Bullet.tscn")
 
 var velocity = Vector3()
 var gravity = -9.8

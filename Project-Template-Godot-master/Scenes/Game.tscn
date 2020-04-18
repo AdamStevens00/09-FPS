@@ -3,12 +3,13 @@
 [ext_resource path="res://Scenes/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/shotgun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Global.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/cliffGrey_top.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -1.00542, 0.00546448, -1.00546, -1.00542, 0.00546448, 1.00546, 1.00546, 0.00546448, -1.00546, 1.00546, 0.00546448, 1.00546 )
 
 [sub_resource type="PlaneMesh" id=2]
+size = Vector2( 200, 200 )
 
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.5
@@ -26,7 +27,6 @@ transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Ground" type="MeshInstance" parent="Ground"]
-transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -75,5 +75,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Global" type="Spatial" parent="."]
-script = ExtResource( 4 )
+[node name="cliffGrey_top" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100 )
